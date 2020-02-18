@@ -3,10 +3,11 @@ node{
         git 'https://github.com/Nikhil12894/test123'
     }
     
-    stage('Compile-Package'){
-        def mvnHome = tool name: 'Maven', type: 'maven'
-        def mvnCMD = "${mvnHome}/bin/mvn"
-        bat "${mvnCMD} mvn install"
+    stage('maven clean'){
+        bat 'mvn clean'
+    }
+    stage('maven install'){
+        bat 'mvn install'
     }
 
 
