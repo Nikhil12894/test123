@@ -4,8 +4,13 @@ node{
     }
     
     stage('Compile-Package'){
-        def mvnHome = tool name: 'Maven', type: 'maven'
-        sh "${mvnHome}/bin/mvn package"
+        def os = System.properties['os.name'].toLowerCase()
+        echo "OS: ${os}"
+        if (os.contains("linux")) {
+         sh "mvn install" 
+        } else {
+         bat "mvn install"
+        }
     }
 
 
